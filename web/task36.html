@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Exam Registration</title>
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f4f4f4;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+}
+.form-box{
+background:#fff;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+width:350px;
+}
+h2{
+text-align:center;
+}
+input[type="text"], input[type="email"]{
+width:100%;
+padding:8px;
+margin:8px 0;
+border:1px solid #ccc;
+border-radius:5px;
+}
+.group{
+margin:10px 0;
+}
+button{
+width:100%;
+padding:10px;
+background:#3498db;
+color:#fff;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+button:hover{
+background:#2980b9;
+}
+.error{
+color:red;
+font-size:13px;
+}
+</style>
+</head>
+<body>
+
+<div class="form-box">
+<h2>Exam Registration</h2>
+
+<form onsubmit="return validateForm()">
+
+<input type="text" id="name" placeholder="Student Name">
+<div id="nameError" class="error"></div>
+
+<input type="email" id="email" placeholder="Email">
+<div id="emailError" class="error"></div>
+
+<div class="group">
+<strong>Gender:</strong><br>
+<label><input type="radio" name="gender" value="Male"> Male</label>
+<label><input type="radio" name="gender" value="Female"> Female</label>
+</div>
+<div id="genderError" class="error"></div>
+
+<div class="group">
+<strong>Subjects:</strong><br>
+<label><input type="checkbox" name="subject"> Math</label>
+<label><input type="checkbox" name="subject"> Physics</label>
+<label><input type="checkbox" name="subject"> Chemistry</label>
+</div>
+<div id="subjectError" class="error"></div>
+
+<div class="group">
+<label><input type="checkbox" id="declaration"> I agree to the declaration</label>
+</div>
+<div id="declError" class="error"></div>
+
+<button type="submit">Register</button>
+
+</form>
+</div>
+
+<script>
+function validateForm(){
+var name = document.getElementById("name").value;
+var email = document.getElementById("email").value;
+var genders = document.getElementsByName("gender");
+var subjects = document.getElementsByName("subject");
+var declaration = document.getElementById("declaration").checked;
+
+var nameError = document.getElementById("nameError");
+var emailError = document.getElementById("emailError");
+var genderError = document.getElementById("genderError");
+var subjectError = document.getElementById("subjectError");
+var declError = document.getElementById("declError");
+
+nameError.innerHTML = "";
+emailError.innerHTML = "";
+genderError.innerHTML = "";
+subjectError.innerHTML = "";
+declError.innerHTML = "";
+
+var valid = true;
+
+if(name === ""){
+nameError.innerHTML = "Name is required";
+valid = false;
+}
+
+if(email === ""){
+emailError.innerHTML = "Email is required";
+valid = false;
+}
+
+var genderSelected = false;
+for(var i=0;i<genders.length;i++){
+if(genders[i].checked){
+genderSelected = true;
+}
+}
+if(!genderSelected){
+genderError.innerHTML = "Select a gender";
+valid = false;
+}
+
+var subjectSelected = false;
+for(var i=0;i<subjects.length;i++){
+if(subjects[i].checked){
+subjectSelected = true;
+}
+}
+if(!subjectSelected){
+subjectError.innerHTML = "Select at least one subject";
+valid = false;
+}
+
+if(!declaration){
+declError.innerHTML = "You must accept the declaration";
+valid = false;
+}
+
+return valid;
+}
+</script>
+
+</body>
+</html>

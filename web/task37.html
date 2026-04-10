@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hotel Booking</title>
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f4f4f4;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+}
+.form-box{
+background:#fff;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+width:350px;
+}
+h2{
+text-align:center;
+}
+input[type="text"]{
+width:100%;
+padding:8px;
+margin:8px 0;
+border:1px solid #ccc;
+border-radius:5px;
+}
+.group{
+margin:10px 0;
+}
+button{
+width:100%;
+padding:10px;
+background:#3498db;
+color:#fff;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+button:hover{
+background:#2980b9;
+}
+.error{
+color:red;
+font-size:13px;
+}
+</style>
+</head>
+<body>
+
+<div class="form-box">
+<h2>Hotel Booking</h2>
+
+<form onsubmit="return validateForm()">
+
+<input type="text" id="name" placeholder="Guest Name">
+<div id="nameError" class="error"></div>
+
+<input type="text" id="contact" placeholder="Contact Number">
+<div id="contactError" class="error"></div>
+
+<div class="group">
+<strong>Room Type:</strong><br>
+<label><input type="radio" name="room"> Single</label>
+<label><input type="radio" name="room"> Double</label>
+<label><input type="radio" name="room"> Suite</label>
+</div>
+<div id="roomError" class="error"></div>
+
+<div class="group">
+<strong>Additional Services:</strong><br>
+<label><input type="checkbox" name="service"> Breakfast</label>
+<label><input type="checkbox" name="service"> Airport Pickup</label>
+<label><input type="checkbox" name="service"> Wi-Fi</label>
+</div>
+<div id="serviceError" class="error"></div>
+
+<div class="group">
+<label><input type="checkbox" id="terms"> I agree to Terms and Conditions</label>
+</div>
+<div id="termsError" class="error"></div>
+
+<button type="submit">Book Now</button>
+
+</form>
+</div>
+
+<script>
+function validateForm(){
+var name = document.getElementById("name").value;
+var contact = document.getElementById("contact").value;
+var rooms = document.getElementsByName("room");
+var services = document.getElementsByName("service");
+var terms = document.getElementById("terms").checked;
+
+var nameError = document.getElementById("nameError");
+var contactError = document.getElementById("contactError");
+var roomError = document.getElementById("roomError");
+var serviceError = document.getElementById("serviceError");
+var termsError = document.getElementById("termsError");
+
+nameError.innerHTML = "";
+contactError.innerHTML = "";
+roomError.innerHTML = "";
+serviceError.innerHTML = "";
+termsError.innerHTML = "";
+
+var valid = true;
+
+if(name === ""){
+nameError.innerHTML = "Guest name is required";
+valid = false;
+}
+
+if(contact === ""){
+contactError.innerHTML = "Contact number is required";
+valid = false;
+}
+
+var roomSelected = false;
+for(var i=0;i<rooms.length;i++){
+if(rooms[i].checked){
+roomSelected = true;
+}
+}
+if(!roomSelected){
+roomError.innerHTML = "Select a room type";
+valid = false;
+}
+
+var serviceSelected = false;
+for(var i=0;i<services.length;i++){
+if(services[i].checked){
+serviceSelected = true;
+}
+}
+if(!serviceSelected){
+serviceError.innerHTML = "Select at least one service";
+valid = false;
+}
+
+if(!terms){
+termsError.innerHTML = "You must agree to terms";
+valid = false;
+}
+
+return valid;
+}
+</script>
+
+</body>
+</html>

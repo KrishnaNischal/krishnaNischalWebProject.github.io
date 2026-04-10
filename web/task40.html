@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Product Tooltip</title>
+<style>
+body{
+font-family:Arial,sans-serif;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+background:#f4f4f4;
+}
+.container{
+text-align:center;
+}
+img{
+width:300px;
+border-radius:10px;
+cursor:pointer;
+}
+.tooltip{
+position:absolute;
+background:#333;
+color:#fff;
+padding:10px;
+border-radius:5px;
+font-size:14px;
+display:none;
+pointer-events:none;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h2>Product</h2>
+<img id="product" src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300&h=300&fit=crop">
+</div>
+
+<div id="tooltip" class="tooltip">
+Price: ₹15,999<br>
+High-performance smartphone with great camera
+</div>
+
+<script>
+var product = document.getElementById("product");
+var tooltip = document.getElementById("tooltip");
+
+product.addEventListener("mouseover", function(){
+tooltip.style.display = "block";
+});
+
+product.addEventListener("mouseout", function(){
+tooltip.style.display = "none";
+});
+
+product.addEventListener("mousemove", function(e){
+tooltip.style.left = e.clientX + 10 + "px";
+tooltip.style.top = e.clientY + 10 + "px";
+});
+</script>
+
+</body>
+</html>

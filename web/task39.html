@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login Form</title>
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f4f4f4;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+}
+.form-box{
+background:#fff;
+padding:25px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+width:300px;
+}
+h2{
+text-align:center;
+}
+input{
+width:100%;
+padding:10px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:5px;
+outline:none;
+transition:0.3s;
+}
+input:focus{
+border-color:#3498db;
+box-shadow:0 0 8px rgba(52,152,219,0.6);
+}
+button{
+width:100%;
+padding:10px;
+background:#3498db;
+color:#fff;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+button:hover{
+background:#2980b9;
+}
+</style>
+</head>
+<body>
+
+<div class="form-box">
+<h2>Login</h2>
+
+<form>
+<input type="text" id="username" placeholder="Username">
+<input type="password" id="password" placeholder="Password">
+<button type="submit">Login</button>
+</form>
+</div>
+
+<script>
+var username = document.getElementById("username");
+var password = document.getElementById("password");
+
+username.addEventListener("blur", function(){
+if(username.value !== ""){
+password.focus();
+}
+});
+
+username.addEventListener("keydown", function(e){
+if(e.key === "Enter" && username.value !== ""){
+e.preventDefault();
+password.focus();
+}
+});
+</script>
+
+</body>
+</html>

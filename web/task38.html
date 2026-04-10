@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Simple Registration</title>
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f4f4f4;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+}
+.form-box{
+background:#fff;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+width:300px;
+}
+input{
+width:100%;
+padding:10px;
+margin:8px 0;
+border:1px solid #ccc;
+border-radius:5px;
+}
+button{
+width:100%;
+padding:10px;
+background:#3498db;
+color:#fff;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+button:hover{
+background:#2980b9;
+}
+.error{
+color:red;
+font-size:13px;
+}
+</style>
+</head>
+<body>
+
+<div class="form-box">
+<h2>Registration</h2>
+
+<form onsubmit="return validateForm()">
+
+<input type="text" id="username" placeholder="Username">
+<input type="email" id="email" placeholder="Email">
+<input type="password" id="password" placeholder="Password">
+
+<div id="error" class="error"></div>
+
+<button type="submit">Submit</button>
+
+</form>
+</div>
+
+<script>
+function validateForm(){
+var username = document.getElementById("username");
+var email = document.getElementById("email");
+var password = document.getElementById("password");
+var error = document.getElementById("error");
+
+error.innerHTML = "";
+
+if(username.value === ""){
+error.innerHTML = "Enter username";
+username.focus();
+return false;
+}
+
+if(email.value === ""){
+error.innerHTML = "Enter email";
+email.focus();
+return false;
+}
+
+if(password.value === ""){
+error.innerHTML = "Enter password";
+password.focus();
+return false;
+}
+
+return true;
+}
+</script>
+
+</body>
+</html>

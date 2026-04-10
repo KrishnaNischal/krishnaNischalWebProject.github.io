@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Total Cost Calculator</title>
+</head>
+<body>
+
+<h2>Total Cost Calculator</h2>
+
+<input type="number" id="price" placeholder="Enter price">
+<input type="number" id="quantity" placeholder="Enter quantity">
+
+<button onclick="showTotal()">Calculate</button>
+
+<div id="result"></div>
+
+<script>
+function calculateTotal(price, quantity){
+return price * quantity;
+}
+
+function showTotal(){
+var price = document.getElementById("price").value;
+var quantity = document.getElementById("quantity").value;
+var total = calculateTotal(price, quantity);
+document.getElementById("result").innerHTML = "Total Cost: " + total;
+}
+</script>
+
+</body>
+</html>

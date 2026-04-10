@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Image Gallery Z-Index</title>
+<style>
+body{
+font-family:Arial,sans-serif;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+background:#f4f4f4;
+}
+
+.gallery{
+position:relative;
+width:400px;
+height:300px;
+}
+
+.gallery img{
+position:absolute;
+width:250px;
+height:180px;
+border-radius:10px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.img1{
+top:20px;
+left:20px;
+z-index:1;
+}
+
+.img2{
+top:60px;
+left:80px;
+z-index:2;
+}
+
+.img3{
+top:100px;
+left:140px;
+z-index:3;
+}
+</style>
+</head>
+<body>
+
+<div class="gallery">
+<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=250&h=180&fit=crop" class="img1">
+<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=250&h=180&fit=crop" class="img2">
+<img src="https://images.unsplash.com/photo-1518449030997-7e5d8ed1c5e7?w=250&h=180&fit=crop" class="img3">
+</div>
+
+<script>
+var images = document.querySelectorAll(".gallery img");
+
+images.forEach(function(img, index){
+img.addEventListener("click", function(){
+
+images.forEach(function(other, i){
+other.style.zIndex = i + 1;
+});
+
+img.style.zIndex = 10;
+
+});
+});
+</script>
+
+</body>
+</html>

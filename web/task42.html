@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Multiple Modals</title>
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f4f4f4;
+text-align:center;
+padding:40px;
+}
+
+button{
+padding:10px 15px;
+margin:10px;
+cursor:pointer;
+}
+
+.modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+background:rgba(0,0,0,0.5);
+opacity:0;
+z-index:-1;
+transition:0.3s;
+}
+
+.modal-content{
+background:#fff;
+padding:20px;
+border-radius:10px;
+min-width:250px;
+}
+
+.show{
+opacity:1;
+}
+
+</style>
+</head>
+<body>
+
+<h2>Open Modals</h2>
+
+<button onclick="openModal('login')">Login</button>
+<button onclick="openModal('signup')">Signup</button>
+<button onclick="openModal('confirm')">Confirmation</button>
+
+<div id="login" class="modal">
+<div class="modal-content">
+<h3>Login</h3>
+<p>Login form here</p>
+</div>
+</div>
+
+<div id="signup" class="modal">
+<div class="modal-content">
+<h3>Signup</h3>
+<p>Signup form here</p>
+</div>
+</div>
+
+<div id="confirm" class="modal">
+<div class="modal-content">
+<h3>Confirmation</h3>
+<p>Are you sure?</p>
+</div>
+</div>
+
+<script>
+var baseZ = 1000;
+
+function openModal(id){
+var modal = document.getElementById(id);
+baseZ++;
+modal.style.zIndex = baseZ;
+modal.classList.add("show");
+}
+
+var modals = document.querySelectorAll(".modal");
+
+modals.forEach(function(modal){
+modal.addEventListener("click", function(e){
+if(e.target === modal){
+modal.style.opacity = "0";
+setTimeout(function(){
+modal.style.zIndex = -1;
+modal.classList.remove("show");
+},300);
+}
+});
+});
+</script>
+
+</body>
+</html>

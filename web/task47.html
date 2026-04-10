@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>jQuery Image Gallery</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+body{
+font-family:Arial,sans-serif;
+text-align:center;
+margin-top:50px;
+background:#f4f4f4;
+}
+
+.main img{
+width:300px;
+height:200px;
+border-radius:10px;
+}
+
+.thumbnails{
+margin-top:20px;
+}
+
+.thumbnails img{
+width:100px;
+height:70px;
+margin:5px;
+cursor:pointer;
+border-radius:5px;
+border:2px solid transparent;
+}
+
+.thumbnails img:hover{
+border-color:#3498db;
+}
+</style>
+</head>
+<body>
+
+<div class="main">
+<img id="mainImage" src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300&h=200&fit=crop">
+</div>
+
+<div class="thumbnails">
+<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300&h=200&fit=crop">
+<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=300&h=200&fit=crop">
+<img src="https://images.unsplash.com/photo-1518449030997-7e5d8ed1c5e7?w=300&h=200&fit=crop">
+</div>
+
+<script>
+$(document).ready(function(){
+$(".thumbnails img").click(function(){
+var newSrc = $(this).attr("src");
+$("#mainImage").fadeOut(300, function(){
+$(this).attr("src", newSrc).fadeIn(300);
+});
+});
+});
+</script>
+
+</body>
+</html>

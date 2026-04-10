@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Checkout Form</title>
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f4f4f4;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+}
+.form-box{
+background:#fff;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+width:320px;
+}
+input, textarea, select{
+width:100%;
+padding:8px;
+margin:8px 0;
+border:1px solid #ccc;
+border-radius:5px;
+}
+button{
+width:100%;
+padding:10px;
+background:#3498db;
+color:#fff;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+button:hover{
+background:#2980b9;
+}
+.error{
+color:red;
+font-size:14px;
+}
+</style>
+</head>
+<body>
+
+<div class="form-box">
+<h2>Checkout</h2>
+
+<form onsubmit="return validateForm()">
+<input type="text" placeholder="Full Name" required>
+
+<input type="text" id="phone" placeholder="Phone Number">
+
+<textarea placeholder="Delivery Address" required></textarea>
+
+<input type="text" id="zip" placeholder="ZIP / Postal Code">
+
+<select id="payment">
+<option value="">Select Payment Option</option>
+<option>Credit Card</option>
+<option>Debit Card</option>
+<option>UPI</option>
+<option>Cash on Delivery</option>
+</select>
+
+<div id="error" class="error"></div>
+
+<button type="submit">Place Order</button>
+</form>
+
+</div>
+
+<script>
+function validateForm(){
+var phone = document.getElementById("phone").value;
+var zip = document.getElementById("zip").value;
+var payment = document.getElementById("payment").value;
+var error = document.getElementById("error");
+
+error.innerHTML = "";
+
+var phonePattern = /^[0-9]{10}$/;
+if(!phonePattern.test(phone)){
+error.innerHTML = "Phone number must be exactly 10 digits";
+return false;
+}
+
+var zipPattern = /^[0-9]{5,6}$/;
+if(!zipPattern.test(zip)){
+error.innerHTML = "Enter a valid ZIP/Postal code";
+return false;
+}
+
+if(payment === ""){
+error.innerHTML = "Please select a payment option";
+return false;
+}
+
+return true;
+}
+</script>
+
+</body>
+</html>

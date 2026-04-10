@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Flexbox Layout</title>
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#f4f4f4;
+}
+.container{
+max-width:1000px;
+margin:40px auto;
+padding:20px;
+background:#fff;
+display:flex;
+justify-content:center;
+gap:20px;
+}
+.box{
+flex:1;
+background:#fafafa;
+padding:15px;
+border:1px solid #ccc;
+text-align:center;
+border-radius:8px;
+}
+.box img{
+width:100%;
+height:150px;
+object-fit:cover;
+border-radius:5px;
+}
+h2{
+margin:10px 0;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="box">
+<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300&h=150&fit=crop">
+<h2>Product 1</h2>
+<p>High quality smartphone with modern features.</p>
+</div>
+
+<div class="box">
+<img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=300&h=150&fit=crop">
+<h2>Product 2</h2>
+<p>Lightweight laptop perfect for daily use.</p>
+</div>
+
+<div class="box">
+<img src="https://images.unsplash.com/photo-1518449030997-7e5d8ed1c5e7?w=300&h=150&fit=crop">
+<h2>Product 3</h2>
+<p>Wireless headphones with excellent sound.</p>
+</div>
+
+</div>
+
+</body>
+</html>

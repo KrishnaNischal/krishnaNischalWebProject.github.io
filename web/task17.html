@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard</title>
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#f4f4f4;
+}
+.topnav table{
+width:100%;
+border-collapse:collapse;
+background:#2c3e50;
+}
+.topnav td{
+padding:15px;
+text-align:center;
+}
+.topnav a{
+color:#fff;
+text-decoration:none;
+font-weight:bold;
+}
+.topnav td:hover{
+background:#34495e;
+}
+.container{
+display:flex;
+}
+.sidebar{
+width:200px;
+background:#34495e;
+min-height:100vh;
+padding-top:20px;
+}
+.sidebar ul{
+list-style:none;
+padding:0;
+margin:0;
+}
+.sidebar li{
+padding:12px 20px;
+}
+.sidebar a{
+color:#fff;
+text-decoration:none;
+display:block;
+}
+.sidebar li:hover{
+background:#2c3e50;
+}
+.content{
+flex:1;
+padding:20px;
+}
+</style>
+</head>
+<body>
+
+<div class="topnav">
+<table>
+<tr>
+<td><a href="#">Home</a></td>
+<td><a href="#">Reports</a></td>
+<td><a href="#">Settings</a></td>
+<td><a href="#">Logout</a></td>
+</tr>
+</table>
+</div>
+
+<div class="container">
+
+<div class="sidebar">
+<ul>
+<li><a href="#">Overview</a></li>
+<li><a href="#">Sales</a></li>
+<li><a href="#">Users</a></li>
+<li><a href="#">Support</a></li>
+</ul>
+</div>
+
+<div class="content">
+<h2>Dashboard Content</h2>
+<p>Welcome to the dashboard. Select options from the navigation menus.</p>
+</div>
+
+</div>
+
+</body>
+</html>

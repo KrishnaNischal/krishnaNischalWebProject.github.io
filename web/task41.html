@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Registration Validation</title>
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f4f4f4;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+}
+.form-box{
+background:#fff;
+padding:25px;
+border-radius:10px;
+box-shadow:0 0 15px rgba(0,0,0,0.1);
+width:320px;
+}
+h2{
+text-align:center;
+}
+.input-group{
+position:relative;
+margin:10px 0;
+}
+input{
+width:100%;
+padding:10px;
+border:1px solid #ccc;
+border-radius:5px;
+outline:none;
+}
+.valid{
+border-color:green;
+}
+.invalid{
+border-color:red;
+}
+.icon{
+position:absolute;
+right:10px;
+top:50%;
+transform:translateY(-50%);
+font-size:16px;
+}
+.error{
+font-size:12px;
+color:red;
+}
+button{
+width:100%;
+padding:10px;
+margin-top:10px;
+background:#3498db;
+color:#fff;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+button:hover{
+background:#2980b9;
+}
+</style>
+</head>
+<body>
+
+<div class="form-box">
+<h2>Register</h2>
+
+<form onsubmit="return validateForm()">
+
+<div class="input-group">
+<input type="text" id="email" placeholder="Email">
+<span id="emailIcon" class="icon"></span>
+</div>
+<div id="emailError" class="error"></div>
+
+<div class="input-group">
+<input type="password" id="password" placeholder="Password">
+</div>
+<div id="passError" class="error"></div>
+
+<button type="submit">Submit</button>
+
+</form>
+</div>
+
+<script>
+var email = document.getElementById("email");
+var password = document.getElementById("password");
+
+email.addEventListener("input", function(){
+var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+var icon = document.getElementById("emailIcon");
+
+if(pattern.test(email.value)){
+email.classList.remove("invalid");
+email.classList.add("valid");
+icon.innerHTML = "✔";
+icon.style.color = "green";
+document.getElementById("emailError").innerHTML = "";
+}else{
+email.classList.remove("valid");
+email.classList.add("invalid");
+icon.innerHTML = "✖";
+icon.style.color = "red";
+document.getElementById("emailError").innerHTML = "Invalid email format";
+}
+});
+
+password.addEventListener("input", function(){
+var value = password.value;
+var error = document.getElementById("passError");
+
+if(value.length < 8){
+error.innerHTML = "At least 8 characters required";
+password.classList.add("invalid");
+password.classList.remove("valid");
+}else if(!/[A-Z]/.test(value)){
+error.innerHTML = "Include at least one uppercase letter";
+password.classList.add("invalid");
+password.classList.remove("valid");
+}else if(!/[0-9]/.test(value)){
+error.innerHTML = "Include at least one number";
+password.classList.add("invalid");
+password.classList.remove("valid");
+}else{
+error.innerHTML = "";
+password.classList.remove("invalid");
+password.classList.add("valid");
+}
+});
+
+function validateForm(){
+var emailValid = email.classList.contains("valid");
+var passValid = password.classList.contains("valid");
+
+if(!emailValid || !passValid){
+return false;
+}
+return true;
+}
+</script>
+
+</body>
+</html>

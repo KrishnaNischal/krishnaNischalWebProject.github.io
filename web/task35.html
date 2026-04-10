@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VTOP Login</title>
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#f4f4f4;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+}
+.login-box{
+background:#fff;
+padding:25px;
+border-radius:10px;
+box-shadow:0 0 15px rgba(0,0,0,0.1);
+width:320px;
+}
+h2{
+text-align:center;
+}
+input, select{
+width:100%;
+padding:10px;
+margin:8px 0;
+border:1px solid #ccc;
+border-radius:5px;
+}
+button{
+width:100%;
+padding:10px;
+background:#3498db;
+color:#fff;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+button:hover{
+background:#2980b9;
+}
+.error{
+color:red;
+font-size:13px;
+}
+</style>
+</head>
+<body>
+
+<div class="login-box">
+<h2>VTOP Login</h2>
+
+<form onsubmit="return validateLogin()">
+<input type="text" id="username" placeholder="Username">
+<div id="userError" class="error"></div>
+
+<input type="password" id="password" placeholder="Password">
+<div id="passError" class="error"></div>
+
+<select id="userType">
+<option value="">Select User Type</option>
+<option>Student</option>
+<option>Faculty</option>
+<option>Admin</option>
+</select>
+<div id="typeError" class="error"></div>
+
+<button type="submit">Login</button>
+</form>
+</div>
+
+<script>
+function validateLogin(){
+var username = document.getElementById("username").value;
+var password = document.getElementById("password").value;
+var userType = document.getElementById("userType").value;
+
+var userError = document.getElementById("userError");
+var passError = document.getElementById("passError");
+var typeError = document.getElementById("typeError");
+
+userError.innerHTML = "";
+passError.innerHTML = "";
+typeError.innerHTML = "";
+
+var valid = true;
+
+if(username === ""){
+userError.innerHTML = "Username is required";
+valid = false;
+}
+
+if(password === ""){
+passError.innerHTML = "Password is required";
+valid = false;
+}
+
+if(userType === ""){
+typeError.innerHTML = "Please select user type";
+valid = false;
+}
+
+if(valid){
+localStorage.setItem("username", username);
+window.location.href = "dashboard.html";
+}
+
+return false;
+}
+</script>
+
+</body>
+</html>

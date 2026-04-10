@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>University Registration</title>
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f4f4f4;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+}
+.form-box{
+background:#fff;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+width:300px;
+}
+input{
+width:100%;
+padding:8px;
+margin:8px 0;
+border:1px solid #ccc;
+border-radius:5px;
+}
+button{
+width:100%;
+padding:10px;
+background:#3498db;
+color:#fff;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+button:hover{
+background:#2980b9;
+}
+.error{
+color:red;
+font-size:14px;
+}
+</style>
+</head>
+<body>
+
+<div class="form-box">
+<h2>Registration</h2>
+
+<form onsubmit="return validateForm()">
+<input type="text" id="name" placeholder="Name">
+<input type="email" id="email" placeholder="Email">
+<input type="password" id="password" placeholder="Password">
+<input type="password" id="confirm" placeholder="Confirm Password">
+<input type="number" id="age" placeholder="Age">
+<div id="error" class="error"></div>
+<button type="submit">Register</button>
+</form>
+
+</div>
+
+<script>
+function validateForm(){
+var name = document.getElementById("name").value;
+var email = document.getElementById("email").value;
+var password = document.getElementById("password").value;
+var confirm = document.getElementById("confirm").value;
+var age = document.getElementById("age").value;
+var error = document.getElementById("error");
+
+error.innerHTML = "";
+
+if(name === "" || email === "" || password === "" || confirm === "" || age === ""){
+error.innerHTML = "All fields are required";
+return false;
+}
+
+if(password.length < 8){
+error.innerHTML = "Password must be at least 8 characters";
+return false;
+}
+
+if(password !== confirm){
+error.innerHTML = "Passwords do not match";
+return false;
+}
+
+if(age < 18){
+error.innerHTML = "Age must be 18 or above";
+return false;
+}
+
+return true;
+}
+</script>
+
+</body>
+</html>

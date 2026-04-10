@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Forms</title>
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#f4f4f4;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+gap:40px;
+padding:40px;
+}
+
+.form-box{
+width:320px;
+background:#fff;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+overflow:hidden;
+}
+
+.form-header{
+background:#2c3e50;
+color:#fff;
+padding:15px;
+text-align:center;
+font-size:18px;
+}
+
+.form-body{
+padding:20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"]{
+width:100%;
+padding:10px;
+margin:8px 0;
+border:1px solid #ccc;
+border-radius:5px;
+outline:none;
+}
+
+input:focus{
+border-color:#3498db;
+box-shadow:0 0 5px rgba(52,152,219,0.5);
+}
+
+.checkbox{
+display:flex;
+align-items:center;
+margin:10px 0;
+}
+
+button{
+width:100%;
+padding:10px;
+border:none;
+background:#3498db;
+color:#fff;
+border-radius:5px;
+cursor:pointer;
+font-size:16px;
+}
+
+button:hover{
+background:#2980b9;
+}
+
+.radio-group{
+margin:10px 0;
+}
+</style>
+</head>
+<body>
+
+<div class="form-box">
+<div class="form-header">Login</div>
+<div class="form-body">
+<form>
+<input type="text" placeholder="Username" required>
+<input type="password" placeholder="Password" required>
+
+<div class="checkbox">
+<input type="checkbox"> Remember me
+</div>
+
+<button type="submit">Login</button>
+</form>
+</div>
+</div>
+
+<div class="form-box">
+<div class="form-header">Register</div>
+<div class="form-body">
+<form>
+<input type="text" placeholder="Full Name" required>
+<input type="email" placeholder="Email" required>
+<input type="password" placeholder="Password" required>
+<input type="password" placeholder="Confirm Password" required>
+
+<div class="radio-group">
+<label><input type="radio" name="gender"> Male</label>
+<label><input type="radio" name="gender"> Female</label>
+</div>
+
+<button type="submit">Register</button>
+</form>
+</div>
+</div>
+
+</body>
+</html>
